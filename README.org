@@ -1,0 +1,6 @@
+#+title:Trone
+
+A 40 key keyboard similar to corne and ferris sweep.
+
+gerber file is for jlcpcb
+
