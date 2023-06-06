@@ -10,33 +10,33 @@ points:
             bottom:
               skip: true
             top:
-              row_net: P1
-              column_net: P18
+              row_net: P3
+              column_net: P9
             home:
-              row_net: P1
-              column_net: P15
+              row_net: P3
+              column_net: P8
         pinky.key:
           stagger: 0.6U
-          column_net: P18
+          column_net: P9
         ring.key:
           stagger: 0.7U
-          column_net: P15
+          column_net: P8
         middle.key:
           stagger: 0.25U
-          column_net: P14
+          column_net: P7
         index.key:
           stagger: -0.25U
-          column_net: P16
+          column_net: P6
         inner.key:
           stagger: -0.15U
-          column_net: P10
+          column_net: P5 
       rows:
         bottom:
-          row_net: P19
+          row_net: P2
         home:
           row_net: P0
         top:
-          row_net: P4
+          row_net: P1
     thumb:
       anchor:
         ref: matrix_index_bottom
@@ -44,19 +44,19 @@ points:
         rotate: 10
       columns:
         inner:
-          key.column_net: P14
+          key.column_net: P7
         home.key:
           splay: -10
           shift: [2.5, -1.5]
-          column_net: P16
+          column_net: P6
         outer.key:
           splay: -25
           shift: [8, 2]
           height: 1.5U
-          column_net: P10
+          column_net: P5
       rows:
         fan:
-          row_net: P1
+          row_net: P3
 
 outlines:
   pcb:
@@ -195,23 +195,25 @@ pcbs:
       usbc:
         what: usbc
         params:
-          B1: P4
-          B2: P0
-          B3: P19
-          B4: P1
-          B5: P5
-          B6: P6
-          B7: P7
-          B8: P8
-          B9: P9
+          A2: P3
+          A5: P2
+          A7: P0
+          A10: P1
+          B1: GND
+          B2: RAW
+          B3: P5
+          B5: P6
+          B8: P7
+          B10: P8
+          B11: P9
         adjust:
           ref: matrix_inner_bottom
-          shift: [1.15U, -0.15U]
+          shift: [1.20U, -0.15U]
           rotate: 90
       mcu:
         what: promicro_with_bridges
         params:
-          orientation: "down"
+          orientation: "up" # central side will be down
         where:
           ref: matrix_inner_top
           shift: [19,-18.5]

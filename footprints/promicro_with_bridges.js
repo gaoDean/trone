@@ -112,11 +112,12 @@ module.exports = {
         (pad 22 thru_hole circle (at 8.89 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P7.str})
         (pad 23 thru_hole circle (at 11.43 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P8.str})
         (pad 24 thru_hole circle (at 13.97 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.P9.str})
-  (pad "25" thru_hole circle (at 3.81 -5.08) (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") ${p.P18.str})
-  (pad "26" thru_hole circle (at 6.35 -5.08) (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") ${p.P15.str})
-  (pad "27" thru_hole circle (at 8.89 -5.08) (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") ${p.P14.str})
-  (pad "28" thru_hole circle (at 11.43 -5.08) (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") ${p.P16.str})
-  (pad "29" thru_hole circle (at 13.97 -5.08) (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") ${p.P10.str})
+
+  (pad "25" thru_hole rect (at 3.81 -5.40)  (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") ${p.P5.str})
+  (pad "26" thru_hole rect (at 6.35 -5.40)  (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") ${p.P6.str})
+  (pad "27" thru_hole rect (at 8.89 -5.40)  (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") ${p.P7.str})
+  (pad "28" thru_hole rect (at 11.43 -5.40) (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") ${p.P8.str})
+  (pad "29" thru_hole rect (at 13.97 -5.40) (size 1.524 1.524) (drill 0.762) (layers "*.Cu" "*.Mask") ${p.P9.str})
       `
     }
     if(p.orientation == 'down') {

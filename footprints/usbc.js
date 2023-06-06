@@ -1,6 +1,10 @@
 module.exports = {
     params: {
         designator: 'USBC',
+        A2: {type: 'net', value: ''},
+        A5: {type: 'net', value: ''},
+        A7: {type: 'net', value: ''},
+        A10: {type: 'net', value: ''},
         B1: {type: 'net', value: ''},
         B2: {type: 'net', value: ''},
         B3: {type: 'net', value: ''},
@@ -25,6 +29,10 @@ module.exports = {
   (pad None np_thru_hole circle (at -3.6 -4.34) (size 0.65 0.65) (drill 0.65) (layers *.Cu *.Mask))
   (pad None np_thru_hole circle (at 3.45 -4.34) (size 0.65 0.65) (drill 0.65) (layers *.Cu *.Mask))
   (pad None np_thru_hole circle (at 3.75 -4.34) (size 0.65 0.65) (drill 0.65) (layers *.Cu *.Mask))
+  (pad A2 smd rect (at -2.25 -5.0 90.0) (size 0.3 0.7) (layers F.Cu F.Mask F.Paste) ${p.A2.str})
+  (pad A5 smd rect (at -0.75 -5.0 90.0) (size 0.3 0.7) (layers F.Cu F.Mask F.Paste) ${p.A5.str})
+  (pad A7 smd rect (at 0.25 -5.0 90.0) (size 0.3 0.7) (layers F.Cu F.Mask F.Paste) ${p.A7.str})
+  (pad A10 smd rect (at 1.75 -5.0 90.0) (size 0.3 0.7) (layers F.Cu F.Mask F.Paste) ${p.A10.str})
   (pad B1 thru_hole circle (at 2.8 -3.69) (size 0.7 0.7) (drill 0.4) (layers *.Cu *.Mask) ${p.B1.str})
   (pad B2 thru_hole circle (at 2.4 -2.99) (size 0.7 0.7) (drill 0.4) (layers *.Cu *.Mask) ${p.B2.str})
   (pad B3 thru_hole circle (at 1.6 -2.99) (size 0.7 0.7) (drill 0.4) (layers *.Cu *.Mask) ${p.B3.str})
