@@ -1,3 +1,4 @@
+// https://www.jaycar.com.au/pcb-mount-usb-3-1-type-c-socket/p/PS0930
 module.exports = {
     params: {
         designator: 'USBC',

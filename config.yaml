@@ -10,56 +10,56 @@ points:
             bottom:
               skip: true
             top:
-              row_net: P3
-              column_net: P9
+              row_net: ROW3
+              column_net: COL4
             home:
-              row_net: P3
-              column_net: P8
+              row_net: ROW3
+              column_net: COL3
         pinky.key:
           stagger: 0.6U
-          column_net: P9
+          column_net: COL4
         ring.key:
           stagger: 0.7U
-          column_net: P8
+          column_net: COL3
         middle.key:
           stagger: 0.25U
-          column_net: P7
+          column_net: COL2
         index.key:
           stagger: -0.25U
-          column_net: P6
+          column_net: COL1
         inner.key:
           stagger: -0.15U
-          column_net: P5 
+          column_net: COL0 
       rows:
         bottom:
-          row_net: P2
+          row_net: ROW2
         home:
-          row_net: P0
+          row_net: ROW1
         top:
-          row_net: P1
+          row_net: ROW0
     thumb:
       anchor:
         ref: matrix_index_bottom
-        shift: [-0.5U, -1.3U]
+        shift: [-0.5U, -1.2U]
         rotate: 10
       columns:
         inner:
-          key.column_net: P7
+          key.column_net: COL2
         home.key:
           splay: -10
-          shift: [2.5, -1.5]
-          column_net: P6
+          shift: [2.5, -2.3]
+          column_net: COL1
         outer.key:
           splay: -25
           shift: [8, 2]
           height: 1.5U
-          column_net: P5
+          column_net: COL0
       rows:
         fan:
-          row_net: P3
+          row_net: ROW3
 
 outlines:
-  pcb:
+  keys:
     - what: rectangle
       where: true
       asym: source
@@ -70,10 +70,30 @@ outlines:
       operation: stack
       points:
         - ref: matrix_inner_top
+          shift: [0, 0.34U]
         - ref: matrix_inner_top
-          shift: [1.5U, 0]
+          shift: [1.5U, 0.34U]
         - ref: matrix_inner_bottom
           shift: [1.5U, -0.9U]
+        - ref: thumb_outer_fan
+          shift: [0.51U, -0.5U]
+        - ref: thumb_home_fan
+          shift: [0, -0.5U]
+        - ref: thumb_inner_fan
+          shift: [0U, -0.5U]
+        - ref: thumb_inner_fan
+          shift: [0U, 0.1U]
+        - ref: matrix_pinky_bottom
+          shift: [9, -0.525U]
+        - ref: matrix_pinky_top
+  polygon_sans_mcu:
+    - what: polygon # all borders
+      operation: stack
+      points:
+        - ref: matrix_inner_bottom
+          shift: [0, 0.05U]
+        - ref: matrix_inner_bottom
+          shift: [1.5U, -0.66U]
         - ref: thumb_outer_fan
           shift: [0.5U, -0.5U]
         - ref: thumb_home_fan
@@ -82,94 +102,99 @@ outlines:
           shift: [0U, -0.5U]
         - ref: thumb_inner_fan
           shift: [0U, 0.1U]
-        - ref: matrix_pinky_bottom
-          shift: [0, -0.53U]
-        - ref: matrix_pinky_top
+        - ref: matrix_middle_bottom
+          shift: [0.45U, 0]
   trackpoint:
     - what: rectangle
-      size: 3.1
+      size: 3.9
       adjust: 
       - aggregate: 
           parts: [matrix_index_top, matrix_index_home, matrix_inner_top, matrix_inner_home]
           method: average
     - what: circle
-      radius: 1.5
+      radius: 1.35
       adjust:
       - aggregate: 
           parts: [matrix_index_top, matrix_index_home, matrix_inner_top, matrix_inner_home]
           method: average
         shift: [10.5, 0]
     - what: circle
-      radius: 1.5
+      radius: 1.35
       adjust:
       - aggregate: 
           parts: [matrix_index_top, matrix_index_home, matrix_inner_top, matrix_inner_home]
           method: average
         shift: [-10.5, 0]
     - what: rectangle
-      size: 3.1
-      adjust:
-        - ref: matrix_index_bottom
-          shift: [0U, -0.6U]
-    - what: circle
-      radius: 1.5
-      adjust:
-        - ref: matrix_index_bottom
-          shift: [10.5, -0.6U]
-    - what: circle
-      radius: 1.5
-      adjust:
-        - ref: matrix_index_bottom
-          shift: [-10.5, -0.6U]
-    - what: rectangle
-      size: 3.1
-      adjust:
-      - ref: matrix_inner_bottom
-        shift: [0.32U, -0.65U]
-    - what: circle
-      radius: 1.5
-      adjust:
-      - ref: matrix_inner_bottom
-        shift: [0.32U + 10.5, -0.65U]
-    - what: circle
-      radius: 1.5
-      adjust:
-      - ref: matrix_inner_bottom
-        shift: [0.32U - 10.5, -0.65U]
-    - what: rectangle
-      size: 3.1
+      size: 3.9
       adjust:
       - aggregate:
           parts: [matrix_inner_bottom, matrix_inner_home, matrix_index_bottom, matrix_index_home]
           method: average
     - what: circle
-      radius: 1.5
+      radius: 1.35
       adjust:
       - aggregate:
           parts: [matrix_inner_bottom, matrix_inner_home, matrix_index_bottom, matrix_index_home]
           method: average
         shift: [10.5, 0]
     - what: circle
-      radius: 1.5
+      radius: 1.35
       adjust:
       - aggregate:
           parts: [matrix_inner_bottom, matrix_inner_home, matrix_index_bottom, matrix_index_home]
           method: average
         shift: [-10.5, 0]
-  pcb_perimeter:
+  pcb:
     - what: outline # keys
-      name: pcb
+      name: keys
     - what: outline
       name: polygon
       operation: add
     - what: outline
       name: trackpoint
       operation: subtract
+  keyholes:
+    - what: rectangle
+      where: true
+      asym: source
+      size: 14.1
+  plate:
+    - what: outline
+      name: keys
+    - what: outline
+      name: polygon_sans_mcu
+      operation: add
+    - what: rectangle
+      size: 14
+      corner: 1
+      adjust:
+        ref: matrix_inner_bottom
+        shift: [17, 0]
+      operation: subtract
+    - what: outline
+      name: keyholes
+      operation: subtract
+    - what: circle
+      radius: 2
+      adjust:
+      - aggregate:
+          parts: [matrix_inner_bottom, matrix_inner_home, matrix_index_bottom, matrix_index_home]
+          method: average
+      operation: subtract
+    - what: circle
+      radius: 2
+      adjust: 
+      - aggregate: 
+          parts: [matrix_index_top, matrix_index_home, matrix_inner_top, matrix_inner_home]
+          method: average
+      operation: subtract
+
 pcbs:
   trone:
     outlines:
       main:
-        outline: pcb_perimeter
+        outline: pcb
     footprints:
       keys:
         what: mx
@@ -187,36 +212,173 @@ pcbs:
           to: "{{row_net}}"
         adjust:
           shift: [0, -5]
-      connector:
-        what: jumper
+      slide_switch:
+        what: slide_switch
         params:
-          from: "{{colrow}}"
-          to: "{{row_net}}"
-      usbc:
-        what: usbc
+          SW2: P1
+          SW1: RAW
+        adjust:
+          ref: matrix_middle_bottom
+          shift: [0, -0.8U]
+      rj45:
+        what: rj45
         params:
-          A2: P3
-          A5: P2
-          A7: P0
-          A10: P1
-          B1: GND
-          B2: RAW
-          B3: P5
-          B5: P6
-          B8: P7
-          B10: P8
-          B11: P9
+          A1: RAW
+          A2: VCC
+          A8: GND
+          A3: SDA
+          A4: SCL
+          A5: INT
         adjust:
           ref: matrix_inner_bottom
-          shift: [1.20U, -0.15U]
+          shift: [0.73U, -0.10U]
           rotate: 90
+      via1:
+        what: via
+        adjust:
+          ref: matrix_ring_bottom
+          shift: [0.2U, -0.55U]
+        params:
+          net: ROW0
+      via2:
+        what: via
+        adjust:
+          ref: matrix_ring_bottom
+          shift: [0.3U, -0.8U]
+        params:
+          net: ROW1
+      via3:
+        what: via
+        adjust:
+          ref: matrix_ring_bottom
+          shift: [-0.3U, -0.8U]
+        params:
+          net: VCC
+      io_expander:
+        what: io_expander
+        params:
+          EXP22: SCL
+          EXP23: SDA
+          EXP1: INT
+          EXP4: ROW3
+          EXP5: COL4
+          EXP6: COL3
+          EXP7: COL2
+          EXP8: COL1
+          EXP9: COL0
+          EXP10: ROW1
+          EXP11: ROW2
+          EXP13: ROW0
+          EXP3: GND
+          EXP2: GND
+          EXP21: GND
+          EXP12: GND
+          EXP24: VCC
+        adjust:
+            ref: matrix_ring_bottom
+            shift: [0U, -0.8U]
+            rotate: 90
+      pullup_col4:
+        what: resistor
+        params:
+          from: VCC
+          to: COL4
+        adjust:
+          ref: matrix_inner_home
+          shift: [1U, -7]
+          rotate: 180
+      pullup_col3:
+        what: resistor
+        params:
+          from: VCC
+          to: COL3
+        adjust:
+          ref: matrix_inner_home
+          shift: [1U, -7 + 2.54]
+          rotate: 180
+      pullup_col2:
+        what: resistor
+        params:
+          from: VCC
+          to: COL2
+        adjust:
+          ref: matrix_inner_home
+          shift: [1U, -7 + 2.54 * 2]
+          rotate: 180
+      pullup_col1:
+        what: resistor
+        params:
+          from: VCC
+          to: COL1
+        adjust:
+          ref: matrix_inner_home
+          shift: [1U, -7 + 2.54 * 3]
+          rotate: 180
+      pullup_col0:
+        what: resistor
+        params:
+          from: VCC
+          to: COL0
+        adjust:
+          ref: matrix_inner_home
+          shift: [1U, -7 + 2.54 * 4]
+          rotate: 180
+      pullup_int:
+        what: resistor
+        params:
+          from: VCC
+          to: INT
+        adjust:
+          ref: matrix_inner_home
+          shift: [1U, -7 + 2.54 * 5]
+          rotate: 180
+      pullup_scl:
+        what: resistor
+        params:
+          from: VCC
+          to: SCL
+        adjust:
+          ref: matrix_inner_home
+          shift: [1U, -7 + 2.54 * 6]
+          rotate: 180
+      pullup_sda:
+        what: resistor
+        params:
+          from: VCC
+          to: SDA
+        adjust:
+          ref: matrix_inner_home
+          shift: [1U, -7 + 2.54 * 7]
+          rotate: 180
+      reset_jumper:
+        what: jumper
+        params:
+          side: 'F'
+          to: 'GND'
+          from: 'RST'
+        adjust:
+          ref: matrix_inner_home
+          shift: [1U, -7 + 2.54 * 9]
+          rotate: 180
       mcu:
-        what: promicro_with_bridges
+        what: promicro
         params:
           orientation: "up" # central side will be down
+          P2: SDA
+          P3: SCL
+          P4: INT
+          P5: COL0
+          P6: COL1
+          P7: COL2
+          P8: COL3
+          P9: COL4
+          P15: ROW0
+          P14: ROW1
+          P16: ROW2
+          P10: ROW3
         where:
           ref: matrix_inner_top
-          shift: [19,-18.5]
+          shift: [19,-18.5 + 0.34U]
           rotate: -90
 
 
